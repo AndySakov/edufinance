@@ -2,7 +2,12 @@ import { Discount } from "../bill";
 
 export interface FinancialAidApplication {
   id: number;
-  applicant: string;
+  applicantName: string;
+  applicant: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
   householdIncome: number;
   hasReceivedPreviousFinancialAid: boolean;
   bankStatementUrl: string;

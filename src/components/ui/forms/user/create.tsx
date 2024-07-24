@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { data, ResponseWithOptionalData } from "@/shared/types/data";
+import { ResponseWithOptionalData } from "@/shared/types/data";
 import { useClient } from "@/shared/axios";
 import { AdminPermissions } from "@/shared/constants";
 import { PermissionSelector } from "../../permission-selector";
@@ -52,13 +52,8 @@ export function CreateUserForm() {
       })
       .then((res) => {
         if (res.data.success) {
-          const user = data(res.data);
-          if (user) {
-            window.location.reload();
-            console.log("User created");
-          } else {
-            console.log("No data");
-          }
+          window.location.reload();
+          console.log("User created");
         } else {
           console.log("Error updating user");
           toast({
@@ -105,7 +100,7 @@ export function CreateUserForm() {
                           {...field}
                           type="text"
                           id="email"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter email"
                         /> */}
                   <Input
@@ -134,7 +129,7 @@ export function CreateUserForm() {
                           {...field}
                           type="text"
                           id="first-name"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter first name"
                         /> */}
                   <Input {...field} id="first-name" placeholder="First name" />
@@ -156,7 +151,7 @@ export function CreateUserForm() {
                           {...field}
                           type="text"
                           id="last-name"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter last name"
                         /> */}
                   <Input {...field} id="last-name" placeholder="Last name" />
@@ -177,7 +172,7 @@ export function CreateUserForm() {
                           {...field}
                           type="text"
                           id="email"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter email"
                         /> */}
                   <PermissionSelector

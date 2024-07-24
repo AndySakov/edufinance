@@ -13,9 +13,9 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { CopyIcon } from "@radix-ui/react-icons";
-import { differenceInCalendarYears, format } from "date-fns";
+import { differenceInCalendarYears, format, isBefore } from "date-fns";
 import { StudentFeeChart } from "@/components/ui/charts/student/fees";
-import { Payment } from "@/shared/types/payment";
+import { MyPayment } from "@/shared/types/payment";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Dialog,
@@ -62,7 +62,7 @@ const StudentDashboard = () => {
   } = useQuery({
     queryKey: ["my-payments"],
     queryFn: async () => {
-      const { data } = await client.get<ResponseWithOptionalData<Payment[]>>(
+      const { data } = await client.get<ResponseWithOptionalData<MyPayment[]>>(
         "/student/payments"
       );
       const results = data.data.map((transaction, index) => ({
@@ -325,8 +325,8 @@ const StudentDashboard = () => {
               <CardContent>
                 <div className="space-y-2">
                   {myPayments
-                    ?.sort(
-                      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+                    ?.sort((a, b) =>
+                      isBefore(b.createdAt, a.createdAt) ? 1 : -1
                     )
                     .slice(0, 5)
                     .map((payment) => (
@@ -335,10 +335,10 @@ const StudentDashboard = () => {
                         key={payment.id}
                       >
                         <div>
-                          <p className="font-medium">{payment.bill}</p>
+                          <p className="font-medium">{payment.billName}</p>
                           <p className="text-muted-foreground text-xs">
                             {payment.paymentType} |{" "}
-                            {format(payment.createdAt, "dd-MM-yyyy")}
+                            {format(payment.createdAt, "dd-MM-yyyy hh:mm a")}
                           </p>
                         </div>
                         <div className="text-right">

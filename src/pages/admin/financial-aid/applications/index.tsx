@@ -82,7 +82,7 @@ const ViewAllFinancialAidApplications = () => {
             renderCell: (value) => <span>{value.toString()}</span>,
           },
           {
-            accessorKey: "applicant",
+            accessorKey: "applicantName",
             header: "Applicant Name",
             renderCell: (value) => <span>{value.toString()}</span>,
           },
@@ -231,24 +231,28 @@ const ViewAllFinancialAidApplications = () => {
                     <p>Approve Application</p>
                   </TooltipContent>
                 </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Button
-                      variant="default"
-                      className="bg-red-800 w-full"
-                      onClick={() => rejectFinancialAidApplication(record.id)}
-                    >
-                      <X />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Reject Application</p>
-                  </TooltipContent>
-                </Tooltip>
+                {record.status === "pending" ? (
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Button
+                        variant="default"
+                        className="bg-red-800 w-full"
+                        onClick={() => rejectFinancialAidApplication(record.id)}
+                      >
+                        <X />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Reject Application</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ) : (
+                  <></>
+                )}
               </TooltipProvider>,
               // <Button
               //   variant="outline"
-              //   className="hover:bg-red-500 border-red-800 w-full ring-1 ring-red-800"
+              //   className="hover:bg-red-500 border-red-800 ring-1 ring-red-800 w-full"
               //   onClick={() => deleteFinancialAidApplication(record.id)}
               // >
               //   <Trash />

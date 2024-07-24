@@ -7,7 +7,11 @@ export const convertToTitleCase = (input: string): string => {
 };
 
 export const formatNumber = (number: number): string => {
-  return "₦" + new Intl.NumberFormat("en-US").format(number);
+  if (number < 100000000) {
+    return "₦" + new Intl.NumberFormat("en-US").format(number);
+  } else {
+    return "₦" + convertToAbbreviation(number);
+  }
 };
 
 export const convertToAbbreviation = (number: number): string => {

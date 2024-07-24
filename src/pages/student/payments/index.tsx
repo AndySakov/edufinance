@@ -1,41 +1,32 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useClient } from "@/shared/axios";
 import {
   // ResponseWithNoData,
   ResponseWithOptionalData,
 } from "@/shared/types/data";
-import { Receipt } from "@phosphor-icons/react";
+import { Receipt as ReceiptIcon } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { statusToVariant, Payment } from "@/shared/types/payment";
+import { statusToVariant, Payment, MyPayment } from "@/shared/types/payment";
 import StudentPage from "@/components/ui/page/student";
+import { Receipt } from "@/components/ui/receipt";
+import { useAuth } from "@/shared/store";
 
 const ViewMyPayments = () => {
   const client = useClient();
   const [search, setSearch] = useState<string | undefined>(undefined);
 
+  const { user } = useAuth();
+
   const { isLoading, isError, data, error, refetch } = useQuery({
     queryKey: ["my-payments"],
     queryFn: async () => {
-      const { data } = await client.get<ResponseWithOptionalData<Payment[]>>(
+      const { data } = await client.get<ResponseWithOptionalData<MyPayment[]>>(
         "/student/payments"
       );
       const results = data.data.map((transaction, index) => ({
@@ -77,7 +68,7 @@ const ViewMyPayments = () => {
             renderCell: (value) => <span>{value.toString()}</span>,
           },
           {
-            accessorKey: "bill",
+            accessorKey: "billName",
             header: "Bill Name",
             renderCell: (value) => <span>{value.toString()}</span>,
           },
@@ -131,46 +122,35 @@ const ViewMyPayments = () => {
             ),
           },
         ]}
-        actions={() => [
-          <TooltipProvider delayDuration={50}>
-            {/* <Tooltip>
-              <TooltipTrigger>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="default"
-                      className="bg-green-800 w-full"
-                      onClick={() => {}}
-                    >
-                      <SealQuestion className="mx-1" /> Request Refund
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Request Refund</DialogTitle>
-                      <DialogDescription>
-                        Request a refund of this payment.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <ApproveFinancialAidApplicationForm id={record.id} />
-                  </DialogContent>
-                </Dialog>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Request Refund</p>
-              </TooltipContent>
-            </Tooltip> */}
-            <Tooltip>
-              <TooltipTrigger>
-                <Button variant="outline" className="w-full" onClick={() => {}}>
-                  <Receipt className="mx-1" /> Download Receipt
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Download Receipt</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>,
+        actions={(record) => [
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full"
+                disabled={record.status !== "paid"}
+              >
+                <ReceiptIcon className="mx-1" /> View Receipt
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <Receipt
+                amountDue={record.bill.amountDue}
+                dateOfPayment={record.createdAt}
+                billName={record.billName}
+                feeSummary={{
+                  subTotal: record.bill.amountDue,
+                  discountsApplied: record.bill.discounts,
+                  amountPaid: record.amount,
+                }}
+                studentName={
+                  (user?.details.firstName ?? "") +
+                  " " +
+                  (user?.details.lastName ?? "")
+                }
+              />
+            </DialogContent>
+          </Dialog>,
         ]}
       />
     </StudentPage>

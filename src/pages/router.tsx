@@ -25,6 +25,7 @@ import ViewAllTransactions from "./admin/payments";
 import ViewMyPayments from "./student/payments";
 import ViewMyBills from "./student/bills";
 import ViewMyFAApplications from "./student/applications";
+import PasswordReset from "./password-reset";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/password/reset",
+    element: <PasswordReset />,
   },
   {
     path: "/admin",

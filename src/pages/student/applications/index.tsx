@@ -1,19 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { DataTable } from "@/components/ui/data-table";
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@/components/ui/tooltip";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
 import { useClient } from "@/shared/axios";
 import { ResponseWithOptionalData } from "@/shared/types/data";
 import { FinancialAidApplication } from "@/shared/types/financial-aid/application";
@@ -22,6 +8,7 @@ import { format } from "date-fns";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import StudentPage from "@/components/ui/page/student";
+// import { ViewDoc } from "@/components/ui/view-doc";
 
 const ViewMyFAApplications = () => {
   const client = useClient();
@@ -108,12 +95,12 @@ const ViewMyFAApplications = () => {
             header: "Bank Statement",
             renderCell: (value) => (
               <a
-                href={value.toString()}
+                href={value?.toString()}
+                download
                 target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-blue-600 hover:underline cursor-pointer"
               >
-                View Bank Statement
+                Download Bank Statement
               </a>
             ),
           },
@@ -122,12 +109,12 @@ const ViewMyFAApplications = () => {
             header: "Cover Letter",
             renderCell: (value) => (
               <a
-                href={value.toString()}
+                href={value?.toString()}
+                download
                 target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-blue-600 hover:underline cursor-pointer"
               >
-                View Cover Letter
+                Download Cover Letter
               </a>
             ),
           },
@@ -136,12 +123,12 @@ const ViewMyFAApplications = () => {
             header: "Recommendation Letter",
             renderCell: (value) => (
               <a
-                href={value.toString()}
+                href={value?.toString()}
+                download
                 target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-blue-600 hover:underline cursor-pointer"
               >
-                View Recommendation Letter
+                Download Recommendation Letter
               </a>
             ),
           },

@@ -1,8 +1,23 @@
 import { BadgeProps } from "@/components/ui/badge";
+import { UserBill } from "./bill";
 
 export interface Payment {
   id: number;
   bill: string;
+  payer: string;
+  paymentType: string;
+  paymentReference: string;
+  status: "pending" | "paid" | "failed" | "refunded";
+  paymentNote: string;
+  amount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface MyPayment {
+  id: number;
+  billName: string;
+  bill: UserBill;
   payer: string;
   paymentType: string;
   paymentReference: string;

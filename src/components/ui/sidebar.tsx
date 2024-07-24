@@ -13,6 +13,7 @@ import {
   CurrencyDollarSimple,
   DoorOpen,
   Invoice,
+  Password,
   // QuestionMark,
   Receipt,
   SealPercent,
@@ -25,6 +26,10 @@ import { User } from "@/shared/types/user";
 import { Link } from "react-router-dom";
 import { AdminPermissions } from "@/shared/constants";
 import React from "react";
+import { Button } from "./button";
+import { useClient } from "@/shared/axios";
+import { ResponseWithNoData } from "@/shared/types/data";
+import { toast } from "../hooks/use-toast";
 
 export interface SidebarProps {
   role: User["role"];
@@ -141,6 +146,19 @@ const Sidebar = (props: SidebarProps) => {
           // },
         ];
   const { user, logout } = useAuth();
+  const client = useClient();
+
+  const doPasswordReset = async () => {
+    await client.post<ResponseWithNoData>("/auth/password/reset/request", {
+      destination: user?.email,
+    });
+    toast({
+      title: "Password Reset",
+      description:
+        "Check your email for instructions on how to reset your password.",
+      variant: "default",
+    });
+  };
 
   return (
     <aside className="flex flex-col border-white bg-gray-900 my-4 p-2 rounded-xl w-72 max-h-screen text-white sm:overflow-y-scroll ms-4 sm:overscroll-y-contain">
@@ -176,18 +194,20 @@ const Sidebar = (props: SidebarProps) => {
         </nav>
       </div>
       <div className="border-gray-800 p-4 border-t">
-        {/* <nav className="space-y-2">
-          <SidebarTab
+        <nav className="space-y-2">
+          {/* <SidebarTab
             to="/admin/support"
             icon={<QuestionMarkCircledIcon className="mr-3 w-5 h-5" />}
             label="Support"
-          />
-          <SidebarTab
-            to="/settings"
-            icon={<GearIcon className="mr-3 w-5 h-5" />}
-            label="Settings"
-          />
-        </nav> */}
+          /> */}
+          <Button
+            className="flex items-center hover:bg-gray-700 hover:shadow-md p-2 rounded-sm w-full text-gray-400 hover:text-white"
+            onClick={() => doPasswordReset()}
+          >
+            <Password className="mr-2 w-4 h-4" />
+            <span className="text-md">Reset Password</span>
+          </Button>
+        </nav>
         <div className="flex justify-between items-center space-x-3 mt-4 p-2">
           <div className="flex items-center space-x-3">
             <Avatar>

@@ -198,7 +198,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="first-name"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter first name"
                         /> */}
                         <Input
@@ -224,7 +224,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="middle-name"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter middle name"
                         /> */}
                         <Input
@@ -250,7 +250,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="last-name"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter last name"
                         /> */}
                         <Input
@@ -278,7 +278,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="gender"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter gender"
                         /> */}
                         <Select onValueChange={field.onChange}>
@@ -312,7 +312,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="nationality"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter nationality"
                         /> */}
                         <Select onValueChange={field.onChange}>
@@ -345,7 +345,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="nationality"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter nationality"
                         /> */}
                         <Select onValueChange={field.onChange}>
@@ -402,7 +402,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="address"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter address"
                         /> */}
                         <Input {...field} id="address" placeholder="Address" />
@@ -424,7 +424,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="city"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter city"
                         /> */}
                         <Input {...field} id="city" placeholder="City" />
@@ -446,7 +446,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="Zipcode"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter Zipcode"
                         /> */}
                         <Input {...field} id="Zipcode" placeholder="Zipcode" />
@@ -470,7 +470,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="country"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter country"
                         /> */}
                         <Select onValueChange={field.onChange}>
@@ -503,7 +503,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="state"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter state"
                         /> */}
                         <Select onValueChange={field.onChange}>
@@ -578,7 +578,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                           {...field}
                           type="text"
                           id="phone"
-                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                          className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                           placeholder="Enter phone number"
                         /> */}
                         <Input
@@ -610,7 +610,7 @@ export function UpdateStudentForm({ student }: UpdateStudentFormProps) {
                                   value={form?.getValues()?.dateOfBirth}
                                   onChange={field.onChange}
                                   id="dateOfBirth"
-                                  className="block border-gray-300 focus:border-indigo-500 shadow-sm px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                                  className="block border-gray-300 focus:border-indigo-500 shadow-sm px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                                   placeholder="Enter Date of Birth"
                                 />
                                 <span className="right-0 absolute inset-y-0 flex items-center pr-3">
