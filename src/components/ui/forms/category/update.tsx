@@ -14,9 +14,9 @@ import {
 import { ResponseWithOptionalData } from "@/shared/types/data";
 import { useClient } from "@/shared/axios";
 import { useParams } from "react-router-dom";
-import { Spinner } from "../../../spinner";
 import { Programme } from "@/shared/types/programme";
 import { toast } from "@/components/hooks/use-toast";
+import { Spinner } from "../../spinner";
 
 const formSchema = z.object({
   name: z
