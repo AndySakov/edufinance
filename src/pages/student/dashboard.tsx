@@ -328,6 +328,7 @@ const StudentDashboard = () => {
                     ?.sort((a, b) =>
                       isBefore(b.createdAt, a.createdAt) ? 1 : -1
                     )
+                    .filter((payment) => payment.status === "paid")
                     .slice(0, 5)
                     .map((payment) => (
                       <div
