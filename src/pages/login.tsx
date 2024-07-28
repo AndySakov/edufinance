@@ -13,7 +13,7 @@ const Login = () => {
     }
   }, [state?.toast, toast]);
   return (
-    <div className="flex justify-center items-center bg-[#0a0e27] min-h-screen">
+    <div className="flex justify-center items-center bg-[#0a0e27] w-full min-h-screen">
       <LoginForm />
       <Toaster />
     </div>

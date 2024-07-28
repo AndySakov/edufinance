@@ -98,10 +98,10 @@ const StudentDashboard = () => {
 
   return (
     <StudentPage title="Overview">
-      <div className="space-y-10 p-6">
-        <h1 className="font-semibold text-xl">Your Profile</h1>
-        <div className="flex flex-grow">
-          <div className="flex flex-col justify-center items-start space-x-4 space-y-4 w-fit">
+      <div className="md:space-y-10 p-6">
+        <h1 className="md:block hidden font-semibold text-xl">Your Profile</h1>
+        <div className="flex flex-wrap lg:flex-nowrap flex-grow justify-center md:justify-evenly gap-6 mb-6 w-full">
+          <div className="flex flex-col justify-center items-center md:items-start space-x-4 space-y-4 w-fit">
             <Avatar className="mx-4 w-24 h-24">
               <AvatarImage src="/placeholder-user.jpg w-full h-full" />
               <AvatarFallback>
@@ -122,7 +122,7 @@ const StudentDashboard = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-evenly gap-6 w-full">
+          <div className="flex flex-wrap md:flex-nowrap justify-evenly gap-6 w-full">
             <div className="flex flex-col gap-4 mx-6">
               <div>
                 <p className="text-muted-foreground">Email</p>
@@ -139,20 +139,6 @@ const StudentDashboard = () => {
                     "" + profile?.gender?.slice(1) ??
                     ""}
                 </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 mx-6">
-              <div>
-                <p className="text-muted-foreground">Address</p>
-                <p className="font-medium">{profile?.address}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Zip Code</p>
-                <p className="font-medium">{profile?.zipCode}</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Nationality</p>
-                <p className="font-medium">{profile?.nationality}</p>
               </div>
             </div>
             <div className="flex flex-col gap-4 mx-6">
@@ -177,6 +163,20 @@ const StudentDashboard = () => {
                 <p className="font-medium">
                   {profile?.state ?? "" + ", " + profile?.country ?? ""}
                 </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 mx-6">
+              <div>
+                <p className="text-muted-foreground">Address</p>
+                <p className="font-medium">{profile?.address}</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground">Zip Code</p>
+                <p className="font-medium">{profile?.zipCode}</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground">Nationality</p>
+                <p className="font-medium">{profile?.nationality}</p>
               </div>
             </div>
             <div className="flex flex-col gap-4 mx-6">

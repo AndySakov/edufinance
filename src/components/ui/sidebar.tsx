@@ -3,6 +3,7 @@ import {
   DashboardIcon,
   // GearIcon,
   GroupIcon,
+  HamburgerMenuIcon,
   IdCardIcon,
   // QuestionMarkCircledIcon,
 } from "@radix-ui/react-icons";
@@ -25,7 +26,7 @@ import { useAuth } from "@/shared/store";
 import { User } from "@/shared/types/user";
 import { Link } from "react-router-dom";
 import { AdminPermissions } from "@/shared/constants";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import { useClient } from "@/shared/axios";
 import { ResponseWithNoData } from "@/shared/types/data";
@@ -146,6 +147,7 @@ const Sidebar = (props: SidebarProps) => {
           // },
         ];
   const { user, logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
   const client = useClient();
 
   const doPasswordReset = async () => {
@@ -161,79 +163,94 @@ const Sidebar = (props: SidebarProps) => {
   };
 
   return (
-    <aside className="flex flex-col border-white bg-gray-900 my-4 p-2 rounded-xl w-72 max-h-screen text-white sm:overflow-y-scroll ms-4 sm:overscroll-y-contain">
-      <div className="flex justify-start items-center bg-gray-900 h-16">
-        <Logo variant="light" />
-      </div>
-      <div className="flex-1 p-4">
-        <nav className="space-y-2">
-          <SidebarTab
-            icon={<DashboardIcon className="mr-3 w-5 h-5" />}
-            label="Dashboard"
-            to={"/"}
-          />
-          {...(user?.role === "super-admin"
-            ? tabs
-            : tabs.filter(
-                (tab) =>
-                  !(
-                    tab.requiredPermissions &&
-                    !tab.requiredPermissions.every((permission) =>
-                      user?.permissions.includes(permission)
-                    )
-                  )
-              )
-          ).map((tab, index) => (
+    <>
+      <button
+        type="button"
+        className="inline-flex top-0 right-0 z-40 fixed items-center sm:hidden hover:bg-gray-100 dark:hover:bg-gray-700 mt-2 p-2 rounded-lg focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 h-fit text-gray-500 text-sm me-3 focus:outline-none dark:text-gray-400"
+        onClick={() => setIsOpen((isOpen) => !isOpen)}
+      >
+        <span className="sr-only">Open sidebar</span>
+        <HamburgerMenuIcon className="w-6 h-6" />
+      </button>
+      <aside
+        // "flex flex-col border-white bg-gray-900 my-4 p-2 rounded-xl w-72 max-h-screen text-white sm:overflow-y-scroll ms-4 sm:overscroll-y-contain"
+        className={`flex justify-evenly ${
+          isOpen ? "fixed" : "hidden"
+        } sm:flex md:relative top-0 left-0 z-30 flex-col border-white bg-gray-900 md:my-4 p-2 md:rounded-xl w-64 md:w-72 h-screen text-white transition-transform sm:overflow-y-scroll md:ms-4`}
+      >
+        <div className="flex justify-start items-center bg-gray-900 h-16">
+          <Logo variant="light" />
+        </div>
+        <div className="flex-1 p-4">
+          <nav className="space-y-2">
             <SidebarTab
-              key={index}
-              icon={tab.icon}
-              label={tab.label}
-              to={tab.to}
+              icon={<DashboardIcon className="mr-3 w-5 h-5" />}
+              label="Dashboard"
+              to={"/"}
             />
-          ))}
-        </nav>
-      </div>
-      <div className="border-gray-800 p-4 border-t">
-        <nav className="space-y-2">
-          {/* <SidebarTab
+            {...(user?.role === "super-admin"
+              ? tabs
+              : tabs.filter(
+                  (tab) =>
+                    !(
+                      tab.requiredPermissions &&
+                      !tab.requiredPermissions.every((permission) =>
+                        user?.permissions.includes(permission)
+                      )
+                    )
+                )
+            ).map((tab, index) => (
+              <SidebarTab
+                key={index}
+                icon={tab.icon}
+                label={tab.label}
+                to={tab.to}
+              />
+            ))}
+          </nav>
+        </div>
+        <div className="border-gray-800 p-4 border-t">
+          <nav className="space-y-2">
+            {/* <SidebarTab
             to="/admin/support"
             icon={<QuestionMarkCircledIcon className="mr-3 w-5 h-5" />}
             label="Support"
           /> */}
-          <Button
-            className="flex items-center hover:bg-gray-700 hover:shadow-md p-2 rounded-sm w-full text-gray-400 hover:text-white"
-            onClick={() => doPasswordReset()}
-          >
-            <Password className="mr-2 w-4 h-4" />
-            <span className="text-md">Reset Password</span>
-          </Button>
-        </nav>
-        <div className="flex justify-between items-center space-x-3 mt-4 p-2">
-          <div className="flex items-center space-x-3">
-            <Avatar>
-              <AvatarImage src="/placeholder-user.jpg" />
-              <AvatarFallback>{`${user?.details.firstName?.[0].toUpperCase()} ${user?.details.lastName?.[0].toUpperCase()}`}</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="font-medium text-sm">{`${
-                user?.details.firstName ?? ""
-              } ${user?.details.lastName ?? ""}`}</p>
-              <p className="text-gray-400 text-xs">
-                {user?.role === "student"
-                  ? "Student"
-                  : user?.role === "admin"
-                  ? "Admin"
-                  : "Super Admin"}
-              </p>
+            <Button
+              className="flex items-center hover:bg-gray-700 hover:shadow-md p-2 rounded-sm w-full text-gray-400 hover:text-white"
+              onClick={() => doPasswordReset()}
+            >
+              <Password className="mr-2 w-4 h-4" />
+              <span className="text-md">Reset Password</span>
+            </Button>
+          </nav>
+          <div className="flex justify-between items-center space-x-3 mt-4 p-2">
+            <div className="flex items-center space-x-3">
+              <Avatar>
+                <AvatarImage src="/placeholder-user.jpg" />
+                <AvatarFallback>{`${user?.details.firstName?.[0].toUpperCase()} ${user?.details.lastName?.[0].toUpperCase()}`}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium text-sm">{`${
+                  user?.details.firstName ?? ""
+                } ${user?.details.lastName ?? ""}`}</p>
+                <p className="text-gray-400 text-xs">
+                  {user?.role === "student"
+                    ? "Student"
+                    : user?.role === "admin"
+                    ? "Admin"
+                    : "Super Admin"}
+                </p>
+              </div>
             </div>
+            <DoorOpen
+              className="ml-auto w-5 h-5 text-gray-400 cursor-pointer"
+              onClick={logout}
+            />
           </div>
-          <DoorOpen
-            className="ml-auto w-5 h-5 text-gray-400 cursor-pointer"
-            onClick={logout}
-          />
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

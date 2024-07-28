@@ -94,7 +94,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className="bg-white shadow-md p-8 rounded-lg w-full max-w-md">
+    <div className="bg-white shadow-md p-8 rounded-lg sm:w-auto lg:w-full max-w-md">
       <Logo variant="dark" />
       <h2 className="mt-4 font-semibold text-black text-xl">
         Sign in with your email
@@ -117,7 +117,7 @@ export function LoginForm() {
                     {...field}
                     type="email"
                     id="email"
-                    className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                    className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                     placeholder="Enter your email"
                   />
                 </FormControl>
@@ -141,7 +141,7 @@ export function LoginForm() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       id="password"
-                      className="block border-gray-300 focus:border-indigo-500 shadow-sm px-3 py-2 border rounded-sm w-full focus:ring-indigo-500 sm:text-sm"
+                      className="block border-gray-300 focus:border-indigo-500 shadow-sm px-3 py-2 border rounded-sm focus:ring-indigo-500 w-full sm:text-sm"
                       placeholder="Enter Password"
                     />
                     <span
