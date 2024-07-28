@@ -64,7 +64,10 @@ const ViewAllUsers = () => {
   return (
     <AdminPage
       title="Manage Users"
-      requiredPermissions={[AdminPermissions.USER_MANAGEMENT]}
+      requiredPermissions={[
+        AdminPermissions.USER_MANAGEMENT,
+        AdminPermissions.SECURITY_AND_ACCESS_CONTROL,
+      ]}
     >
       <PaginatedTable
         title="Users List"
