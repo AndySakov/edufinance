@@ -57,7 +57,7 @@ const ViewAllFinancialAidDiscounts = () => {
   return (
     <AdminPage
       title="Manage Financial Aid Discounts"
-      requiredPermissions={[AdminPermissions.FINANCIAL_AID_GRADES_MANAGEMENT]}
+      requiredPermissions={[AdminPermissions.BILL_DISCOUNTS_MANAGEMENT]}
     >
       <DataTable
         title="Financial Aid Discounts List"

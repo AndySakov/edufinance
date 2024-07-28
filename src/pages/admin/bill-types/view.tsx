@@ -33,7 +33,7 @@ const ViewBillType = () => {
   return (
     <AdminPage
       title={`Bill Type Details - ${data?.name}`}
-      requiredPermissions={[AdminPermissions.PROGRAMME_MANAGEMENT]}
+      requiredPermissions={[AdminPermissions.FEE_AND_DUES_MANAGEMENT]}
     >
       {isLoading ? (
         <div className="mx-auto p-4 container">

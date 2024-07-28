@@ -33,7 +33,7 @@ const ViewFinancialAidDiscount = () => {
   return (
     <AdminPage
       title={`Financial Aid Discount Details - ${data?.name}`}
-      requiredPermissions={[AdminPermissions.FINANCIAL_AID_GRADES_MANAGEMENT]}
+      requiredPermissions={[AdminPermissions.BILL_DISCOUNTS_MANAGEMENT]}
     >
       {isLoading ? (
         <div className="mx-auto p-4 container">

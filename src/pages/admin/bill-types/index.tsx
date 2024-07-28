@@ -57,7 +57,7 @@ const ViewAllBillTypes = () => {
   return (
     <AdminPage
       title="Manage Bill Types"
-      requiredPermissions={[AdminPermissions.PROGRAMME_MANAGEMENT]}
+      requiredPermissions={[AdminPermissions.FEE_AND_DUES_MANAGEMENT]}
     >
       <DataTable
         title="Bill Types List"
