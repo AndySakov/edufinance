@@ -15,7 +15,7 @@ export interface StatGroupProps {
 export function StatGroup({ cards }: StatGroupProps) {
   return (
     <div>
-      <div className="flex flex-wrap justify-center md:justify-between gap-4 w-full">
+      <div className="flex flex-wrap justify-center md:justify-between gap-4 my-6 md:my-0 w-full">
         {cards.map((card, index) => (
           <Card
             key={index}

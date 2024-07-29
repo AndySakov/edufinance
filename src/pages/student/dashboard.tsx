@@ -123,7 +123,7 @@ const StudentDashboard = () => {
             </div>
           </div>
           <div className="flex flex-wrap md:flex-nowrap justify-evenly gap-6 w-full">
-            <div className="flex flex-col gap-4 mx-6">
+            <div className="flex flex-col items-center md:items-start gap-4 mx-6 text-center md:text-start">
               <div>
                 <p className="text-muted-foreground">Email</p>
                 <p className="font-medium">{profile?.email}</p>
@@ -141,7 +141,7 @@ const StudentDashboard = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 mx-6">
+            <div className="flex flex-col items-center md:items-start gap-4 mx-6 text-center md:text-start">
               <div>
                 <p className="text-muted-foreground">Age</p>
                 <p className="font-medium">
@@ -165,7 +165,7 @@ const StudentDashboard = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 mx-6">
+            <div className="flex flex-col items-center md:items-start gap-4 mx-6 text-center md:text-start">
               <div>
                 <p className="text-muted-foreground">Address</p>
                 <p className="font-medium">{profile?.address}</p>
@@ -179,7 +179,7 @@ const StudentDashboard = () => {
                 <p className="font-medium">{profile?.nationality}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 mx-6">
+            <div className="flex flex-col items-center md:items-start gap-4 mx-6 text-center md:text-start">
               <div>
                 <p className="text-muted-foreground">Date of Birth</p>
                 <p className="font-medium">
@@ -266,7 +266,7 @@ const StudentDashboard = () => {
           )}
         </div>
         <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
-          <div className="md:col-span-2">
+          <div className="md:block hidden md:col-span-2">
             <Card
               variant="outline"
               className="hover:bg-gray-100 hover:text-card-foreground"
