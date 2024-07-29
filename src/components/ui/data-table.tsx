@@ -24,6 +24,7 @@ export type DataTableProps<T> = {
   onRowClick?: (record: T) => void;
   extras?: ReactNode | ReactNode[] | undefined;
   actions?: (record: T) => ReactNode | ReactNode[] | undefined;
+  hasSearch?: boolean;
 };
 
 export const DataTable = <T,>(props: DataTableProps<T>) => {
@@ -39,22 +40,25 @@ export const DataTable = <T,>(props: DataTableProps<T>) => {
     onRowClick = () => {},
     extras,
     actions,
+    hasSearch = false,
   } = props;
   return (
     <div className="flex flex-col gap-4 bg-white">
-      <div className="flex justify-between items-center bg-muted px-4 py-4 rounded-lg">
+      <div className="flex md:flex-row flex-col justify-between items-center gap-4 md:gap-0 bg-muted px-4 py-4 rounded-lg">
         <h2 className="font-semibold text-xl">{title}</h2>
-        <div className="flex items-center gap-4">
-          <div className="relative flex-1 w-1/3">
-            <MagnifyingGlass className="top-2.5 left-2.5 absolute w-4 h-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search records..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-8 w-full"
-            />
-          </div>
+        <div className="flex md:flex-row flex-col items-center gap-6">
+          {hasSearch ? (
+            <div className="relative flex-1 w-full md:w-1/3">
+              <MagnifyingGlass className="top-2.5 left-2.5 absolute w-4 h-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search records..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-8 w-full"
+              />
+            </div>
+          ) : null}
           {extras ? (
             <div className="flex items-center gap-4">{extras}</div>
           ) : null}

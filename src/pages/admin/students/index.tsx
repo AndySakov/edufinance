@@ -74,6 +74,7 @@ const ViewAllStudents = () => {
         page={page}
         pageSize={pageSize}
         search={search ?? ""}
+        hasSearch={true}
         pageSizes={[10, 20, 50, 100]}
         setPage={(page) => {
           if (page < 1) {
